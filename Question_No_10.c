@@ -16,7 +16,7 @@ int main(void)
 	 printf("Enter the Adress of Header Adress :");
 	 scanf("%d",&Start);
 	 A[0]=Start;
-	 printf("X\tY\t\Difference\n");
+	 printf("X\tY\t\difference\n");
 	 for(int Y=0; Y<Size; Y++)
 	 {
 	 	Diff=abs(A[Y+1]-A[Y]);
