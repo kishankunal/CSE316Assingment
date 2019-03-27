@@ -24,3 +24,13 @@ Let's take a look at how FCFS process scheduling works. Suppose there are three 
 
 queue: P1, P2 and P3. P1 is placed in the processing register with a waiting time of zero seconds and 10 seconds for complete processing. The next process, P2 , must wait 10 seconds and is placed in the processing cycle until P1 is processed. Assuming that P2 will take 15 seconds to complete, the final process, P3, must wait 25 seconds to be processed. FCFS may not be the fastest process scheduling algorithm, as it does not check for priorities associated with processes. These priorities may depend on the processes' individual execution times.
 
+
+Question no-17. Design a scheduling program to implements a Queue with two levels:
+
+Level 1 : Fixed priority preemptive Scheduling
+Level 2: Round Robin Scheduling
+
+For a Fixed priority preemptive Scheduling (Queue1), the Priority 0 is highest priority. If one process P1 is scheduled and running, another process P2 with higher priority comes. The New process (high priority) process P2 preempts currently running process P1 and process P1 will go to second level queue. Time for which process will strictly execute must be considered in the multiples of 2. All the processes in second level queue will complete their execution according to round robin scheduling.
+Consider: 1. Queue 2 will be processed after Queue 1 becomes empty.
+
+
