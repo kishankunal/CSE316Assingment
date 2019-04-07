@@ -3,7 +3,7 @@
 #include<stdlib.h>
 int main(void)
 {
-	 int A[100],Size,Start,Seek=0,Diff;
+     int A[100],Size,Start,Seek=0,Diff;
      float Avg;
      printf("Enter the total number of Cylinders :");
      scanf("%d",&Size);
