@@ -50,18 +50,28 @@ Algorithm for round robin scheduling:
 1- Create an array Rem_Bt[] to keep track of remaining
    burst time of processes. This array is initially a 
    copy of Bt[] (burst times array)
+   
 2- Create another array Wt[] to store waiting times
    of processes. Initialize this array as 0.
+   
 3- Initialize time : t = 0
+
 4- Keep traversing the all processes while all processes
    are not done. Do following for i'th process if it is
    not done yet.
+   
 a-	If Rem_Bt[i] > quantum
+
 (i)  t = t + quantum
+
        (ii) Bt_Rem[i] -= quantum;
+       
     c- Else // Last cycle for this process
+    
        (i)  t = t + Bt_Rem[i];
+       
        (ii) Wt[i] = t - bt[i]
+       
        (ii) Bt_Rem[i] = 0; // This process is over
        
        
@@ -78,8 +88,11 @@ Complexity:  O(n3)
 
 Boundary Conditions:
 •	Level 1 : Fixed priority preemptive Scheduling
+
 •	Level 2 : Round Robin Scheduling
+
 •	Consider: 1. Queue 2 will be processed after Queue 1 becomes empty.
+
 •	Consider 2. Priority of Queue 2 has lower priority than in Queue 1.
 
 
