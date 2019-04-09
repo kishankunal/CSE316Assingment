@@ -5,7 +5,7 @@ Name-Kishan Kunal            ||         Section -K17SJ             ||           
 
 Course Instructor-Shivali Chopra
 
-Github url:-github.com/kishankunal/CSE316Assingment
+Github url:-github.com/kishankunal/CSE316Assingment 
 
 Question N0-10
 
@@ -63,9 +63,9 @@ Algorithm for round robin scheduling:
    are not done. Do following for i'th process if it is
    not done yet.
    
-a-	If Rem_Bt[i] > quantum
+      a-	If Rem_Bt[i] > quantum
 
-(i)  t = t + quantum
+       (i)  t = t + quantum
 
        (ii) Bt_Rem[i] -= quantum;
        
