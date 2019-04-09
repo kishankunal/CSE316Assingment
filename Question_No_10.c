@@ -28,5 +28,5 @@ int main(void)
 	 printf("The avergae would come as %f",Avg);
 	 getch();
 	 
-	 
+ 	 
 }
