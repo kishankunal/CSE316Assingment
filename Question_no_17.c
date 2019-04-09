@@ -3,9 +3,9 @@
 #include<stdlib.h>
 struct process
 {
-    int pro_name;
-    int arrT, waiturnT, turnT, priority, burTcopy,burT;
-}queue1[10],queue2[10];
+    int Procees_number;
+    int Arrrival_Time, Waiting_Time, TurnTime, Priority, BurstTimeCopy,BurstTime;
+}Queue1[10],Queue2[10];
 int main(void)
 {
 	struct process temp;
@@ -18,17 +18,17 @@ int main(void)
     {
     	printf("\nEnter Process name:-");
     	//fflush(stdin);//to flush the buffer
-        scanf("%d",&queue1[i].pro_name);
-        printf("\nEnter Details For processor %d:\n",queue1[i].pro_name);
+        scanf("%d",&Queue1[i].Procees_number);
+        printf("\nEnter Details For processor %d:\n",Queue1[i].Procees_number);
         printf("Enter Arrival Time:-");
-        scanf("%d",&queue1[i].arrT);
+        scanf("%d",&Queue1[i].Arrrival_Time);
         printf("Enter Burst Time:-");
-        scanf("%d",&queue1[i].burT);
-        queue1[i].burTcopy=queue1[i].burT;
+        scanf("%d",&Queue1[i].BurstTime);
+        Queue1[i].BurstTimeCopy=Queue1[i].BurstTime;
         printf("Enter Priority:\t");
-        scanf("%d",&queue1[i].priority);
+        scanf("%d",&Queue1[i].Priority);
     }
-    printf("\nEnter Time Quantum for Fixed priority queue:-");
+    printf("\nEnter Time Quantum for Fixed Priority queue:-");
     scanf("%d",&t1);
     printf("\nEnter Time Quantum for Round Robin queue:-");
     scanf("%d",&t2);
@@ -38,29 +38,29 @@ int main(void)
         pos=i;
         for(j=i+1;j<totalProcess;j++)
         {
-            if(queue1[j].arrT<queue1[pos].arrT)
+            if(Queue1[j].Arrrival_Time<Queue1[pos].Arrrival_Time)
                 pos=j;
         }
-        temp=queue1[i];
-        queue1[i]=queue1[pos];
-        queue1[pos]=temp;
+        temp=Queue1[i];
+        Queue1[i]=Queue1[pos];
+        Queue1[pos]=temp;
     }
-    time=queue1[0].arrT;
+    time=Queue1[0].Arrrival_Time;
     for(i=0;totalProcess!=0;i++)
     {
     	while(count!=t1)
     	{
     		count++;
-    		if(queue1[i].arrT<=time)
+    		if(Queue1[i].Arrrival_Time<=time)
     		{
     			for(j=i+1;j<totalProcess;j++)
     			{
-    				if(queue1[j].arrT==time && queue1[j].priority<queue1[i].priority)//pr<
+    				if(Queue1[j].Arrrival_Time==time && Queue1[j].Priority<Queue1[i].Priority)//pr<
     				{
-    					queue2[pf2]=queue1[i];
+    					Queue2[pf2]=Queue1[i];
 						pf2++;
     					for(k=i; k<totalProcess-1;k++)
-    						queue1[k]=queue1[k+1];
+    						Queue1[k]=Queue1[k+1];
     					totalProcess--;
 						count=0;
     					i=j-1;
@@ -69,27 +69,27 @@ int main(void)
 				}
 			}
 			time++;
-			queue1[i].burT--;
-			if(queue1[i].burT==0)
+			Queue1[i].BurstTime--;
+			if(Queue1[i].BurstTime==0)
 			{
-				queue1[i].turnT=time-queue1[i].arrT;
-				queue1[i].waiturnT=queue1[i].turnT-queue1[i].burTcopy;
-				printf("%d\t|\t%d\t|\t%d\n",queue1[i].pro_name,queue1[i].turnT,queue1[i].waiturnT);
-				wait_time+=time-queue1[i].waiturnT; 
-    			turnaround_time+=time-queue1[i].turnT;
+				Queue1[i].TurnTime=time-Queue1[i].Arrrival_Time;
+				Queue1[i].Waiting_Time=Queue1[i].TurnTime-Queue1[i].BurstTimeCopy;
+				printf("%d\t|\t%d\t|\t%d\n",Queue1[i].Procees_number,Queue1[i].TurnTime,Queue1[i].Waiting_Time);
+				wait_time+=time-Queue1[i].Waiting_Time; 
+    			turnaround_time+=time-Queue1[i].TurnTime;
     			for(k=i;k<totalProcess-1;k++)
-    				queue1[k]=queue1[k+1];i--;
+    				Queue1[k]=Queue1[k+1];i--;
     			totalProcess--;
 				count=t1;break;
 			}
 		}
 		count=0;
-		if(queue1[i].burT!=0)
+		if(Queue1[i].BurstTime!=0)
 		{
-			queue2[pf2]=queue1[i];
+			Queue2[pf2]=Queue1[i];
 			pf2++;
 			for(k=i;k<totalProcess-1;k++)
-    			queue1[k]=queue1[k+1];
+    			Queue1[k]=Queue1[k+1];
     		totalProcess--;
 		}
 			if(i==totalProcess-1)
@@ -99,27 +99,27 @@ int main(void)
 	totalProcess2=pf2;
 	for(count=0;totalProcess2!=0;) 
 	{ 
-		if(queue2[count].burT<=t2&&queue2[count].burT>0) 
+		if(Queue2[count].BurstTime<=t2&&Queue2[count].BurstTime>0) 
     	{ 
-    		time+=queue2[count].burT; 
-    		queue2[count].burT=0; 
+    		time+=Queue2[count].BurstTime; 
+    		Queue2[count].BurstTime=0; 
     		flag=1; 
     	} 
-    	else if(queue2[count].burT>0) 
+    	else if(Queue2[count].BurstTime>0) 
     	{ 
-    		queue2[count].burT-=t2; 
+    		Queue2[count].BurstTime-=t2; 
     		time+=t2; 
     	} 
-    	if(queue2[count].burT==0&&flag==1) 
+    	if(Queue2[count].BurstTime==0&&flag==1) 
     	{ 
     		totalProcess2--; 
-    		queue2[count].turnT=time-queue2[count].arrT;
-			queue2[count].waiturnT=queue2[count].turnT-queue2[count].burTcopy; 
-			printf("%d\t|\t%d\t|\t%d\n",queue2[count].pro_name,queue2[count].turnT,queue2[count].waiturnT); 
-    		turnaround_time+=time-queue2[count].arrT; 
-    		wait_time+=time-queue2[count].arrT-queue2[count].burTcopy;
+    		Queue2[count].TurnTime=time-Queue2[count].Arrrival_Time;
+			Queue2[count].Waiting_Time=Queue2[count].TurnTime-Queue2[count].BurstTimeCopy; 
+			printf("%d\t|\t%d\t|\t%d\n",Queue2[count].Procees_number,Queue2[count].TurnTime,Queue2[count].Waiting_Time); 
+    		turnaround_time+=time-Queue2[count].Arrrival_Time; 
+    		wait_time+=time-Queue2[count].Arrrival_Time-Queue2[count].BurstTimeCopy;
     		for(k=count; k<totalProcess2;k++)
-    			queue2[k]=queue2[k+1];count--;
+    			Queue2[k]=Queue2[k+1];count--;
     		flag=0; 
     	} 
     	if(count==totalProcess2-1) 
