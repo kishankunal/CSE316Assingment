@@ -16,14 +16,14 @@ int main(void)
 	 printf("Enter the Adress of Header Adress :");
 	 scanf("%d",&Begin);
 	 A[0]=Begin;
-	 printf("X\tY\tDifferenceerence\n");
+	 printf("X\tY\tSeek Difference\n");
 	 for(int Y=0; Y<Size; Y++)
 	 {
 	 	Difference=abs(A[Y+1]-A[Y]);
 	 	Seek+=Difference;
 	 	printf("%d\t%d\t%d\n",A[Y],A[Y+1],Difference);
 	 }
-	 printf("Total distance travelled is &d\n :",Seek);
+	 printf("Total distance travelled is %d\n :",Seek);
 	 Average=Seek/Size;
 	 printf("The avergae would come as %f",Average);
 	 getch();
